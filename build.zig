@@ -19,7 +19,7 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("src/ztester.zig"),
         .version = .{
             .major = 0,
-            .minor = 1,
+            .minor = 0,
             .patch = 0,
         },
     };
