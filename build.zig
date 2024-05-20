@@ -141,8 +141,8 @@ fn setupRemoveOutput(b: *std.Build) void {
 }
 
 fn setupExamples(b: *std.Build, cfg: Config, mod: *std.Build.Module) void {
-    var egs_dir = std.fs.cwd().openDir(
-        "examples",
+    var egs_dir = std.fs.openDirAbsolute(
+        b.path("examples").getPath(b),
         .{ .iterate = true },
     ) catch |err| {
         print("{s}: {!}\n", .{ cfg.name, err });
