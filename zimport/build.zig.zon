@@ -5,8 +5,8 @@
 
     .dependencies = .{
         .ztester = .{
-            .url = "https://github.com/7R35C0/ztester/releases/download/ztester/ztester.tar.gz",
-            .hash = "1220ea6e70cd0c80375974e3975c2bc7d903323d290bec047c4e2834d793c183ea3c",
+            .url = "https://github.com/7R35C0/ztester/releases/download/ztester-0.0.1/ztester-0.0.1.tar.gz",
+            .hash = "122047584f645b2f90039b735f7873df3dc3c5cca6ac19fa7b80ee61dbdcdf66a8e3",
             // .path = "foo",
             // .lazy = false,
         },
