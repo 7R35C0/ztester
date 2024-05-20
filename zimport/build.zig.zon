@@ -1,0 +1,29 @@
+.{
+    .name = "zimport",
+    .version = "0.0.0",
+    //.minimum_zig_version = "0.12.0",
+
+    .dependencies = .{
+        .ztester = .{
+            .url = "https://github.com/7R35C0/ztester/releases/download/ztester/ztester.tar.gz",
+            .hash = "1220ea6e70cd0c80375974e3975c2bc7d903323d290bec047c4e2834d793c183ea3c",
+            // .path = "foo",
+            // .lazy = false,
+        },
+
+        //.example = .{
+        //    .url = "https://example.com/foo.tar.gz",
+        //    .hash = "...",
+        //    .path = "foo",
+        //    .lazy = false,
+        //},
+    },
+
+    .paths = .{
+        "src",
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "README.md",
+    },
+}
