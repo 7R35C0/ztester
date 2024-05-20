@@ -77,7 +77,7 @@ fn setupLibrary(b: *std.Build, cfg: Config) *std.Build.Step.Compile {
 
 fn setupTest(b: *std.Build, cfg: Config) *std.Build.Step.Compile {
     const tst = b.addTest(.{
-        .name = "freetype-tests",
+        .name = cfg.name,
         .target = cfg.target,
         .optimize = cfg.optimize,
         .root_source_file = cfg.root_source_file,

@@ -8,3 +8,7 @@ const print = std.debug.print;
 pub fn printMessage(message: []const u8) void {
     print("Hello {s}\n", .{message});
 }
+
+test "ztester" {
+    print("Hello test\n", .{});
+}
