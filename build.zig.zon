@@ -1,0 +1,22 @@
+.{
+    .name = "ztester",
+    .version = "0.0.0",
+    //.minimum_zig_version = "0.12.0",
+
+    .dependencies = .{
+        //.example = .{
+        //    .url = "https://example.com/foo.tar.gz",
+        //    .hash = "...",
+        //    .path = "foo",
+        //    .lazy = false,
+        //},
+    },
+
+    .paths = .{
+        "src",
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "README.md",
+    },
+}
