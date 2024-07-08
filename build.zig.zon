@@ -1,7 +1,7 @@
 .{
     .name = "ztester",
-    .version = "0.0.0",
-    //.minimum_zig_version = "0.12.0",
+    .version = "0.1.0",
+    //.minimum_zig_version = "0.13.0",
 
     .dependencies = .{
         //.example = .{
@@ -13,11 +13,8 @@
     },
 
     .paths = .{
-        "examples",
         "src",
         "build.zig",
         "build.zig.zon",
-        "LICENSE",
-        "README.md",
     },
 }
