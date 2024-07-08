@@ -1,4 +1,4 @@
-# &&& VisualStudioCode
+#& VisualStudioCode
 .vscode/*
 !.vscode/*.code-snippets
 !.vscode/c_cpp_properties.json
@@ -14,11 +14,14 @@
 .history
 .ionide
 
-# &&& Zig programming language
+#& Zig programming language
+.zig-cache/
+.zig-out/
 zig-cache/
 zig-out/
 build/
 build-*/
 docgen_tmp/
 
-# &&& Project specific
+#& Project specific
+archives/
