@@ -5,10 +5,10 @@
 //:========================================================================
 
 const std = @import("std");
-const print = std.debug.print;
+const ztester = @import("ztester");
 
-pub fn printMessage() void {
-    print("ztezter works!\n", .{});
+pub fn main() void {
+    ztester.printMessage();
 }
 
 //+========================================================================
