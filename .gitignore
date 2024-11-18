@@ -24,4 +24,5 @@ build-*/
 docgen_tmp/
 
 #& Project specific
-archives/
+.archive/
+demo.txt
