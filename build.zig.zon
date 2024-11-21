@@ -11,8 +11,8 @@
 
     .dependencies = .{
         .algore = .{
-            .url = "https://github.com/7R35C0/algore/archive/641df91eac3793b215e5bfcee26b27a202aa82b2.tar.gz",
-            .hash = "1220c80fe32e4d87feca3012d45b41582645f25b13dcf5697bf6916b8c2f58626be0",
+            .url = "https://github.com/7R35C0/algore/archive/e6317aef43a6cfe997393b189e4aad842bcc1478.tar.gz",
+            .hash = "1220a0db0d76ef55beb9f6b919e06ca5259f4ecc580707352f0002aef636d9a44554",
             // .path = "foo",
             // .lazy = false,
         },
