@@ -10,13 +10,6 @@
     //.minimum_zig_version = "0.13.0",
 
     .dependencies = .{
-        .algore = .{
-            .url = "https://github.com/7R35C0/algore/archive/e6317aef43a6cfe997393b189e4aad842bcc1478.tar.gz",
-            .hash = "1220a0db0d76ef55beb9f6b919e06ca5259f4ecc580707352f0002aef636d9a44554",
-            // .path = "foo",
-            // .lazy = false,
-        },
-
         //.example = .{
         //    .url = "https://example.com/foo.tar.gz",
         //    .hash = "...",
