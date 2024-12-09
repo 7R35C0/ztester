@@ -1,0 +1,38 @@
+//:========================================================================
+//: Licensed under the [MIT License](LICENSE).
+//:
+//: Tested with zig version 0.13.0 on Linux Fedora 39.
+//:========================================================================
+
+.{
+    .name = "tests",
+    .version = "0.1.0",
+    //.minimum_zig_version = "0.13.0",
+
+    .dependencies = .{
+        .ztester = .{
+            .url = "https://github.com/7R35C0/ztester/archive/3466325eb90982ca3d69971feb3693c528b2e775.tar.gz",
+            .hash = "1220408268f82f144a2e5bc70e4be5a6d708a4ee9a0c267a755c1fbc05e65c35cc22",
+            // .path = "foo",
+            // .lazy = false,
+        },
+
+        //.example = .{
+        //    .url = "https://example.com/foo.tar.gz",
+        //    .hash = "...",
+        //    .path = "foo",
+        //    .lazy = false,
+        //},
+    },
+
+    .paths = .{
+        "bench",
+        "demo",
+        "src",
+        "utils",
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "README.md",
+    },
+}
