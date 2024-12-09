@@ -11,8 +11,8 @@
 
     .dependencies = .{
         .ztester = .{
-            .url = "https://github.com/7R35C0/ztester/archive/3466325eb90982ca3d69971feb3693c528b2e775.tar.gz",
-            .hash = "1220408268f82f144a2e5bc70e4be5a6d708a4ee9a0c267a755c1fbc05e65c35cc22",
+            .url = "https://github.com/7R35C0/ztester/archive/9618169322a9c6c288c5d818bf506b4090718330.tar.gz",
+            .hash = "12209da0cde2d2fc9325af39db58ac82ae3e905ce96d00d42a490f9e45dff8e75ff6",
             // .path = "foo",
             // .lazy = false,
         },
@@ -29,6 +29,7 @@
         "bench",
         "demo",
         "src",
+        "tests",
         "utils",
         "build.zig",
         "build.zig.zon",

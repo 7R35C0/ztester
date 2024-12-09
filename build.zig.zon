@@ -22,6 +22,7 @@
         "bench",
         "demo",
         "src",
+        "tests",
         "utils",
         "build.zig",
         "build.zig.zon",

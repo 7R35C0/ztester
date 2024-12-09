@@ -9,7 +9,7 @@ const std = @import("std");
 const ztester = @import("ztester");
 
 pub fn main() !void {
-    std.debug.print("\tresult: {}\n", .{ztester.add(1, 1)});
+    std.debug.print("\tresult: {}\n", .{ztester.add(2, 2)});
 }
 
 test "ztester.add(1, 1)" {

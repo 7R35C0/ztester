@@ -7,6 +7,10 @@
 const std = @import("std");
 const print = std.debug.print;
 
+pub fn main() !void {
+    std.debug.print("\tresult: {}\n", .{add(1, 1)});
+}
+
 pub fn add(a: usize, b: usize) usize {
     return a + b;
 }

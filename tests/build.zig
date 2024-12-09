@@ -38,7 +38,7 @@ const Config = struct {
 
 pub fn build(b: *std.Build) void {
     // `name` is the name of project's root and entry file
-    const name = "ztester";
+    const name = "tests";
 
     // build configuration
     const cfg = Config{
@@ -149,69 +149,6 @@ fn setupStaticLibrary(b: *std.Build, cfg: Config) *std.Build.Step.Compile {
 
     return lib;
 }
-
-// fn setupTest(b: *std.Build, cfg: Config, mod: *std.Build.Module) *std.Build.Step.Compile {
-//     const tst_step = b.step(
-//         "tst",
-//         "Run specific tests",
-//     );
-
-//     if (b.args) |paths| {
-//         for (paths) |path| {
-//             const tst = b.addTest(.{
-//                 .name = std.fs.path.stem(path),
-//                 .target = cfg.target,
-//                 .optimize = cfg.optimize,
-//                 .root_source_file = .{
-//                     .src_path = .{
-//                         .owner = b,
-//                         .sub_path = path,
-//                     },
-//                 },
-//                 .version = cfg.version,
-//             });
-//             tst.root_module.addImport(cfg.name, mod);
-
-//             for (b.available_deps) |dep| {
-//                 tst.root_module.addImport(dep[0], b.dependency(
-//                     dep[0],
-//                     .{
-//                         .target = cfg.target,
-//                         .optimize = cfg.optimize,
-//                     },
-//                 ).module(dep[0]));
-//             }
-
-//             const tst_run = b.addRunArtifact(tst);
-//             tst_step.dependOn(&tst_run.step);
-
-//             return tst;
-//         }
-//     }
-
-//     const tst = b.addTest(.{
-//         .name = cfg.name,
-//         .target = cfg.target,
-//         .optimize = cfg.optimize,
-//         .root_source_file = cfg.root_source_file,
-//         .version = cfg.version,
-//     });
-
-//     for (b.available_deps) |dep| {
-//         tst.root_module.addImport(dep[0], b.dependency(
-//             dep[0],
-//             .{
-//                 .target = cfg.target,
-//                 .optimize = cfg.optimize,
-//             },
-//         ).module(dep[0]));
-//     }
-
-//     const tst_run = b.addRunArtifact(tst);
-//     tst_step.dependOn(&tst_run.step);
-
-//     return tst;
-// }
 
 fn setupTest(b: *std.Build, cfg: Config) *std.Build.Step.Compile {
     const tst_step = b.step(
@@ -331,7 +268,36 @@ fn setupRun(b: *std.Build, cfg: Config, mod: *std.Build.Module) void {
             exe_run.step.dependOn(&exe_install.step);
             run_step.dependOn(&exe_run.step);
         }
+
+        return;
     }
+
+    const exe = b.addExecutable(.{
+        .name = cfg.name,
+        .target = cfg.target,
+        .optimize = cfg.optimize,
+        .root_source_file = cfg.root_source_file,
+        .version = cfg.version,
+    });
+    exe.root_module.addImport(cfg.name, mod);
+
+    for (b.available_deps) |dep| {
+        exe.root_module.addImport(dep[0], b.dependency(
+            dep[0],
+            .{
+                .target = cfg.target,
+                .optimize = cfg.optimize,
+            },
+        ).module(dep[0]));
+    }
+
+    const exe_install = b.addInstallArtifact(
+        exe,
+        .{},
+    );
+    const exe_run = b.addRunArtifact(exe);
+    exe_run.step.dependOn(&exe_install.step);
+    run_step.dependOn(&exe_run.step);
 }
 
 fn setupFormat(b: *std.Build) void {
