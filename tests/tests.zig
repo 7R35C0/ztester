@@ -5,12 +5,17 @@
 //:========================================================================
 
 const std = @import("std");
-const print = std.debug.print;
 
-pub fn add(a: usize, b: usize) usize {
-    return a + b;
+const ztester = @import("ztester");
+
+pub fn main() !void {
+    std.debug.print("\tresult: {}\n", .{ztester.add(1, 1)});
 }
 
-test "ztester.add(5, 5)" {
-    try std.testing.expect(add(5, 5) == 10);
+test "ztester.add(1, 1)" {
+    try std.testing.expect(ztester.add(1, 1) == 2);
+}
+
+test "ztester.add(2, 2)" {
+    try std.testing.expect(ztester.add(2, 2) == 4);
 }

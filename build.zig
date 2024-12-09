@@ -66,7 +66,7 @@ pub fn build(b: *std.Build) void {
     // run tests
     // command: zig build tst
     // outputs: none
-    const tst = setupTest(b, cfg);
+    const tst = setupTest(b, cfg, mod);
 
     // generate code coverage
     // command: zig build cov
@@ -150,11 +150,44 @@ fn setupStaticLibrary(b: *std.Build, cfg: Config) *std.Build.Step.Compile {
     return lib;
 }
 
-fn setupTest(b: *std.Build, cfg: Config) *std.Build.Step.Compile {
+fn setupTest(b: *std.Build, cfg: Config, mod: *std.Build.Module) *std.Build.Step.Compile {
     const tst_step = b.step(
         "tst",
-        "Run tests",
+        "Run specific tests",
     );
+
+    if (b.args) |paths| {
+        for (paths) |path| {
+            const tst = b.addTest(.{
+                .name = std.fs.path.stem(path),
+                .target = cfg.target,
+                .optimize = cfg.optimize,
+                .root_source_file = .{
+                    .src_path = .{
+                        .owner = b,
+                        .sub_path = path,
+                    },
+                },
+                .version = cfg.version,
+            });
+            tst.root_module.addImport(cfg.name, mod);
+
+            for (b.available_deps) |dep| {
+                tst.root_module.addImport(dep[0], b.dependency(
+                    dep[0],
+                    .{
+                        .target = cfg.target,
+                        .optimize = cfg.optimize,
+                    },
+                ).module(dep[0]));
+            }
+
+            const tst_run = b.addRunArtifact(tst);
+            tst_step.dependOn(&tst_run.step);
+
+            return tst;
+        }
+    }
 
     const tst = b.addTest(.{
         .name = cfg.name,
